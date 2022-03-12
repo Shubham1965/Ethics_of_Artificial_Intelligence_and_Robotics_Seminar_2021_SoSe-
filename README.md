@@ -29,7 +29,7 @@ Assigned Paper:
 3. **Keywords**: Machine Ethics
 4. **Link**: https://ojs.aaai.org//index.php/aimagazine/article/view/2065 (Machine Ethics: Creating an Ethical Intelligent Agent, Michael Anderson and Susan Leigh Anderson, 28(4): Winter 2007, 15).
 5. **Supervisor**: Dominik Baumann.
-6.** Synopsis**: This paper is about the famous DeepMind work on mastering Go. On this paper we want to focus on the general idea of RL in combination with presenting the difficulties of the use case problem and some student chosen details We expect that the student to present the problem, the high level idea, and some in depth details
+6. **Synopsis**: This paper is about the famous DeepMind work on mastering Go. On this paper we want to focus on the general idea of RL in combination with presenting the difficulties of the use case problem and some student chosen details We expect that the student to present the problem, the high level idea, and some in depth details
 
 Contents of the repo:
 1. **LaTeX pdf of my report.**
