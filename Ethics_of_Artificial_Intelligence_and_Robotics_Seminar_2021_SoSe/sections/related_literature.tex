@@ -1,0 +1,45 @@
+To date, we have condensed all ethical theories developed since ancient times into the following types: \textit{deontological, consequentialism, virtue, particularism, hybrid, configurable}, and \textit{ambiguous} \cite{10.1145/3419633}.\ Anderson et al.\ \cite[pp.~20--22]{Anderson_Anderson_2007} have discussed the implementation of some of the above-mentioned theory types which help to glean their limitations.\ We refer the reader to \cite[p.~19]{10.1145/3419633} for more relevant implementations.\ Inspired by Russell and Norvig \cite{russell2016artificial}, different types of technologies used for implementing the above-mentioned ethical theories have been distinguished, see Table~\ref{tech_types}.
+
+\begin{table}[htbp]
+    \caption{Types of AI technologies}
+    \label{tech_types}
+    \scriptsize
+    \centering
+    \begin{tabular}{|c|l|}
+        \hline
+        \textbf{Types of Reasoning} & \textbf{Sub-types}   \\
+        % \hline 
+        \hline
+        \multirow{8}{*}{Logic-based} & Deductive logic \\
+        & Non-monotonic logic\\
+        & Abductive logic\\
+        & Deontic logic\\
+        & Rule-based system\\
+        & Event calculus\\
+        & Knowledge representation \\
+        & Inductive logic\\
+        
+        \hline
+        \multirow{3}{*}{Probabilistic-based} & Bayesian approach\\
+        & Markov models\\
+        & Statistical inference\\
+        
+        \hline
+        \multirow{6}{*}{Learning-based} & Inductive Logic\\ 
+        & Markov models\\
+        & Decision Tree\\
+        & Reinforcement Leanring \\
+        & Neural Networks \\
+        & Evolutionary computing \\
+        
+        \hline
+        \multicolumn{2}{|l|}{Optimization-based}\\
+        
+        \hline 
+        \multicolumn{2}{|l|}{Case-based} \\
+        
+        \hline
+    \end{tabular}
+\end{table}
+
+Allen et al.\ \cite{Allen2005-ALLAMT} have distinguished three types of implementation approaches.\ First, the top-down approaches assume that humans have gathered sufficient knowledge on a specific topic; it is a matter of translating this knowledge into an implementation.\ The aforementioned ethical theory types: \textit{deontological, consequentialism}, etc.\ fall under this category.\ Second, the bottom-up approach is a different method.\ They assume that the machine can learn how to act if it receives enough correctly labelled data as input.\ All the technology types in Table~\ref{tech_types} fall under this hood.\ Lastly, the hybrid approach combines top-down and bottom-up approaches.\ The top-down approaches emphasize the importance of explicit ethical concerns that arise from outside of the system, while the bottom-up approaches cultivates implicit values that arise from within the system.\ Top-down principles represent broad controls, while values that emerge from the bottom-up development are causal determinants of a system’s behaviour.\ Both top-down and bottom-up approaches embody different aspects and if no single approach meets the criteria, a hybrid will be necessary.\ Thus, the implementation of machine ethics has a controversial history but the brief review supports Anderson et al.\ \cite{Anderson_Anderson_2007} who have adopted a hybrid approach to tackle the problems faced in creating an explicit ethical agent.\ They have attempted to put forth an easy six-step procedure to compute ethics in domain-specific applications.

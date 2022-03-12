@@ -1,0 +1,73 @@
+\documentclass[10pt, a4paper, twocolumn]{article}
+
+%%%%% Standard packages %%%%%
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{siunitx}
+
+%inserted
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[all]{nowidow}
+
+
+\sisetup{detect-all, binary-units}
+\usepackage[style=numeric-comp, backend=biber,sortcites = true,giveninits=true]{biblatex}
+\addbibresource{ref.bib}
+
+%%%%% Customize abstract %%%%%
+\def\abstract{\normalfont%
+     \bfseries\textit{Abstract}---\,%
+   }
+\def\endabstract{\relax\vspace{1.34ex}\par%
+    \normalfont\normalsize}
+    
+%% Customize fakepar for steps in section 4 %%
+\newcommand{\fakepar}[1]{\vspace{1mm}\noindent\textbf{#1.}}
+
+\title{Machine Ethics: Creating an ethically intelligent machine}
+
+\author{Shubham Kamble, M.Sc.\ in Robotic Systems Engineering, RWTH Aachen, Germany}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The field of machine ethics is concerned with adding an ethical dimension to our machines to make their behaviour ethically acceptable towards human users.\ This report discusses the importance of machine ethics and the need to focus on the development of explicit ethical machines.\ It surveys existing approaches and discusses a possible methodology for creating an explicit ethical machine.\ We discuss the challenges of creating such machines using this methodology and an attempt to solve one of the challenges with a reinforcement learning framework that teaches relevant ethical principles to these machines.
+\end{abstract}
+
+\section{Introduction}
+\input{sections/introduction}
+
+\section{Related Literature}
+\input{sections/related_literature}
+
+\section{Problem Setting}
+In this report, we have tried to answer the following philosophical questions.\ Can ethics be computed?\ Can machines behave ethically?\ Is there a single correct action in ethical dilemmas?\ These questions point to the development of a formal system that needs to be consistent enough to capture previous ethical decision making and be decidable in making decisions for newly anticipated situations by appealing to the ethical principles defined in the formal system.\ We shed light on the extent to which such a consistent, formal system exists to date, to pave the way for creating explicit ethical agents which deems to be a hard task for AI researchers.
+
+\section{Methodology}
+Anderson et al.\ \cite[pp.~22--25]{Anderson_Anderson_2007}, in the following, have demonstrated a methodology for creating an ethical agent by representing ethical principles explicitly.
+\input{sections/methodology}
+
+\section{Critical Assessment}
+\input{sections/critical_assessment}
+
+\section{POMDP framework}
+\input{sections/POMDP_framework}
+
+
+\section{Group discussion points}
+For the first question about whether there is a better way to represent ethical principles than prima-facie duties, all mathematical disciplines rely on a different set of axioms for reasoning and inferring. Similarly, different ethical domains, biomedical, legal, etc., will need a different set of ethical principles.\ Hence, this way of representation can be a way forward but the question of who decides those principles remains.\ To the last question in the Evaluation Step, an argument of the need for comparison with a mixed group and not relying solely on a trained ethicist was put forth, which might better solve the problem of inherent bias.\ Also, such groups can decide the ethical principles at Step 1.
+
+\section{Conclusion}
+Machine ethics is becoming an integral part of the field of artificial intelligence.\ As proposed, its goal should be to create explicit ethical machines.\ We have shown through our demonstration that it may be possible to incorporate explicit ethical components into machines.\ The capability of these machines functioning autonomously in the real world is challenged by numerous criticisms.\ AI researchers need to ensure who investigates the representation of ethical principles, who incorporates the principles that might conflict into the system's decision procedure, which design procedure to adopt, how to make decisions based on uncertain knowledge, how to provide explanations for the decision made using the principles, and how to better evaluate these systems.\ There is a need for a dialogue between trained ethicists, AI researchers, and other stakeholders, where there is an opportunity to resolve the above challenges that might propel the development of autonomous intelligent machines.
+
+\printbibliography
+
+\end{document}

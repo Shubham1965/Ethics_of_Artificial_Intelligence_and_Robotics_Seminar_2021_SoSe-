@@ -1,0 +1,27 @@
+Here, we investigate relevant ethical principles and teach them to our agent using a partially observable Markov decision process (POMDP).\ To make our claim, we describe a toy ethical dilemma, the \textit{Cake or Death} dilemma, discussed in detail by Armstrong \cite{DBLP:conf/aaai/Armstrong15} and in short by Abel et al.\ \cite{Abel2016ReinforcementLA}.\ Formally, a POMDP is a 7-tuple $\langle S, A, \tau, R, \gamma, \Omega, O\rangle$; where $S$ is a set of states, $A$ is a set of actions, $\tau$ is a set of conditional transition probabilities between states, $R$ is the reward function, $\Omega$ is a set of observations, $\gamma$ is the discount factor, and $O$ is a set of conditional observation probabilities. For the ease of presentation, we consider $\gamma = 1$.\\
+\indent The \textit{Cake or Death} problem describes a situation where an agent is unsure whether baking a cake or killing people is ethical.\ So, it has an initial 50-50 split belief, $b(cake) = b(kill) = 0.5$.\ The agent can either kill three people, bake a cake for one, or ask a companion what is ethical. If baking people cakes is ethical, then it gets a utility of 1; if killing is ethical, then it gets a utility of 3 for killing 3 people.\\
+This ethical dilemma can be represented with a POMDP consisting of the following elements:\\
+$S = \{cake,death,end\}$,\\
+$A = \{bake-cake,kill,ask\}$,\\
+$\Omega = \{ans-cake,ans-death,\emptyset \}$,\\
+$R = 
+\begin{dcases}
+1, &\text{if } S = cake \text{ and } A = bake-cake,\\
+3, &\text{if } S = death \text{ and } A = kill,\\
+0, &\text{otherwise}.
+\end{dcases}
+$\\
+\indent Two states indicate whether baking a cake is ethical or if killing is ethical and a third state that the decision-making problem has ended.\ The transition from all actions are deterministic; the ask action transitions back to the same state it left, and the bake-cake and kill actions transition to the end state.\ The reward function is a piecewise function that depends only on the previous state and action taken.\ The observations consist of the possible answers to the ask action and a null observation for transitioning to the absorbing state.\ Finally, the observation probabilities are defined deterministically for answers that correspond to the true value of the hidden state:
+\begin{align*}
+    1 &= O(ans-death \mid death,ask)\\
+      &= O(\emptyset \mid end,bake-cake)\\
+      &= O(\emptyset \mid end,kill)\\
+      &= O(ans-cake \mid cake,ask)
+\end{align*}
+and zero for everything else. There are three relevant policies, for which there are three state value functions to consider. First, the bake policy ($\pi_b$) that immediately selects the bake-cake action. We have $V^{\pi_b}(cake) = R(cake, bake-cake) = 1$ and $V^{\pi_b}(death) = R(death, bake-cake) = 0$.\ With these values, weighted by $b(cake) = b(kill) = 0.5$, we get an expected new belief of the bake policy as $0.5$.\ Similarly, for the kill policy ($\pi_k$), that immediately selects the kill action, we have $V^{\pi_k}(cake) = R(cake, kill) = 0$ and $V^{\pi_k}(death) = R(death, kill) = 3$, and we get an expected new belief of the kill policy as $1.5$.\ Lastly, the expected new belief of the ask policy ($\pi_a$), that asks what is moral, selects the bake-cake action if it observes ans-cake and selects kill if it observes ans-death.\ It requires enumerating the possible observations after asking the question conditioned on the initial state.\ Luckily, this is trivial to evaluate, since the set of observations is deterministic given the initial environment hidden state.\ Thus, we have $V^{\pi_k}(cake) = R(cake, ask) + R(cake, bake-cake) = 0 + 1 = 1$ and $V^{\pi_k}(death) = R(death, ask)+R(death, kill) = 0+3 = 3$, and weighting them by the initial beliefs, we have an expected new belief of 2.\ Hence, the optimal behavior is sensibly to ask what the ethical policy is and then perform the corresponding best action for it. 
+
+The above framework can be utilised to find relevant duties from all possible combination sets of all prima-facie duties.\ Coming back to the question of how we can teach relevant duties to the agent in a medical domain adopted by Anderson et al., the proposed changes in the formulation of the POMDP are as follows:\\ 
+$S = \{\emptyset, A, N, B, J, … , (A,N,B), … , (A,N,B,J)\}$,\\
+$A = \{relevant, non-relevant, ask\}$,\\
+$\Omega = \{ans-relevant,ans-non-relevant,\emptyset \}$,\\
+and the reward function $R$ as well as the set of conditional observation probabilities $O$ needs to be designed.\ In the above set $S$, A is autonomy, N is nonmaleficence, B is beneficence, and J is justice.\ This one of possible proposed change to the POMDP framework will help us tackle two problems: the POMDP framework can build the agent's knowledge-background of previous case profiles, and we can help the agent to learn the relevant duties in new case profiles.\ Still, who should give the agent the correct observation from the set $\Omega$ remains unanswered.\ This points to the question of who gets to decide these prima-facie duties?\ From a computational perspective, for $n$ number of duties, we will get $2^n$ elements in the combination set of duties, so computational complexity might be forbiddingly high for larger $n$.\ Lastly, all challenges that a POMDP algorithm faces also need to be dealt with \cite[p.~7]{Abel2016ReinforcementLA}.
